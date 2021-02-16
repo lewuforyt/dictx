@@ -1,0 +1,2 @@
+# dictx
+dictx sözlük uygulaması

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script src='https://www.google.com/recaptcha/api.js'></script>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" />
+    <link rel="stylesheet" href="static/css/login.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body style="background-color: #161616;" class="w3-row">
+
+    
+    <div class="w3-left w3-margin">
+        <img src="static/img/logo.png" id="logo" />
+    </div>
+
+    
+    
+    <!---<i class="fa fa-telegram" id="telegram"></i>--->
+
+    <div class="w3-center">
+        
+        <form class="w3-display-middle" method="POST">
+            <input class="w3-margin input" placeholder="kullanıcı adı" name="username">
+            <br>
+            <input class="w3-margin input" placeholder="şifre" type="password" name="password">
+            <br>
+            <div class="g-recaptcha w3-margin" data-sitekey="sitekey"></div>
+            <input class="w3-margin" type="submit" value="sağ ayakla giriş" style="background-color: #ceab17;" id="button">
+            <br>
+            <a href="/kayit" class="w3-center sifre-neydi">kayit olcam ben</a>
+        </form>
+
+    </div>
+
+    
+    
+
+</body>
+</html>

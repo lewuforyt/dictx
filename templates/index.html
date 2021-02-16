@@ -1,0 +1,118 @@
+<html>
+    <head>
+        <title>Programlamacı Sözlüğü</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta charset="utf-8">
+
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" />
+        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+        <link rel="stylesheet" href="static/css/index.css">
+        
+    </head>
+    <body>
+         <diV class="w3-bar ust" style="position: fixed;">
+
+                
+            <button class="w3-button w3-hide-large w3-mobile openNav-kapat" id="openNav" onclick="w3_open()">&#9776;</button>
+                
+
+            <span class="w3-bar-item w3-mobile"><a href="/"><img class="logo" src="static/img/logo.png" /></span></a>
+
+            {% if logged_in %}
+                
+                <span class="w3-right w3-mobile">
+                    
+                    <a class="w3-bar-item w3-mobile" href="/dev/{{request.cookies.get('username')}}">ben</a>
+                    <a class="w3-bar-item w3-mobile" href="/cikis">terk et</a>
+                    <a class="w3-bar-item w3-mobile" href="/yenibaslik">yeni başlık aç</a>
+                    
+                </span>
+
+            {% else %}
+
+                <span class="w3-right w3-mobile">
+                    <a class="w3-bar-item w3-mobile" href="/giris">giriş yap</a>
+                    <a class="w3-bar-item w3-mobile" href="/kayit">kayıt ol</a>
+                </span>
+            
+            {% endif %}
+
+            
+            
+         </diV>
+
+         <div class="w3-sidebar w3-bar-block w3-collapse w3-card w3-animate-left bg-sidebar ust sidebar-margin" style="position: fixed;" id="mySidebar">
+            <button class="w3-bar-item w3-button w3-large w3-hide-large" onclick="w3_close()">kapat &times;</button>
+            <span class="w3-bar-item w3-xlarge" style="text-decoration:bold;">gündem</span>
+            <table class="w3-xxlarge w3-table">
+                {% for baslik in gundemBasliklar%}
+                    <tr class="w3-bar-item w3-button no-hover" draggable="true">
+                        
+                        <td class="mysidebar">
+                            <a href="/baslik/{{baslik['baslikId']}}" class="no-hover">{{baslik["baslik"]}}</a>
+                        </td>
+                    
+                        <td class="posts">
+                            {{baslik["postlar"]}}
+                        </td>
+                    </tr>
+                {% endfor %}        
+            </table>
+        </div>
+
+        
+        <div id="main" class="w3-container w3-left-align w3-threequarter main-kapat">
+
+            <div class="w3-container w3-threequarter w3-margin-top pr-margin-top w3-mobile">
+                <span class="baslik">
+                    <a href="/baslik/{{a['baslikId']}}" class="baslik-tag">
+                        {{a["baslik"]}}
+                    </a>
+                </span>
+            </div>
+
+            
+
+            <div class="w3-container w3-threequarter w3-margin-top">
+                
+                {% for entry in result%}
+                    <div class="entry">
+                        <span class="w3-left-align">
+                            {{entryBeautifier(entry["message"])|safe}}
+                        <br><br>
+                        
+                        <span class="w3-right">
+                            <a class="entry-date" href="/entry/{{entry['entryId']}}">{{entry["date"]}}</a>
+                            <a class="entry-author" href="/dev/{{entry['author']}}">{{entry["author"]}}</a>
+        
+                            <div class="w3-dropdown-hover">
+                            <i class="fas fa-ellipsis-h"></i>
+                            <div class="w3-dropdown-content w3-bar-block ust">
+                            {% if logged_in %}
+                                <a href="/report/{{entry['entryId']}}" class="w3-bar-item w3-button no-hover">raporla</a>
+
+                                {% if entry["author"] == request.cookies.get("username") or admin_mi %}
+                                    <a href="/edit/{{entry['entryId']}}" class="w3-bar-item w3-button no-hover">editle</a>
+                                    <a onclick="deleteMsg('{{entry["entryId"]}}');" class="w3-bar-item w3-button no-hover" id="delete-sil" name="{{entry['entryId']}}">sil</a>
+                                {% endif %}
+                            
+                            {% endif %}
+                            </div>
+                        </div>
+                        </span>
+                    </div>
+                {% endfor %}
+
+            
+                
+                
+            
+            <script src="static/js/index.js"></script>
+    
+        
+    
+    </body>
+
+</html>

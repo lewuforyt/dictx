@@ -1,0 +1,115 @@
+<html>
+    <head>
+        <title>Programlamacı Sözlüğü</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta charset="utf-8">
+
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" /> 
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" />
+        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" />
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}" />
+        
+    </head>
+    <body>
+         <diV class="w3-bar ust" style="position: fixed;">
+
+                
+            <button class="w3-button w3-hide-large w3-mobile openNav-kapat" id="openNav" onclick="w3_open()">&#9776;</button>
+                
+
+            <span class="w3-bar-item w3-mobile"><img class="logo" src="{{ url_for('static', filename='img/logo.png') }}" /></span></a>
+
+            {% if logged_in %}
+                
+                <span class="w3-right w3-mobile">
+                    
+                    <a class="w3-bar-item w3-mobile" href="/dev/{{request.cookies.get('username')}}">ben</a>
+                    <a class="w3-bar-item w3-mobile" href="/cikis">terk et</a>
+                    <a class="w3-bar-item w3-mobile" href="/yenibaslik">yeni başlık aç</a>
+                    
+                </span>
+
+            {% else %}
+
+                <span class="w3-right w3-mobile">
+                    <a class="w3-bar-item w3-mobile" href="/giris">giriş yap</a>
+                    <a class="w3-bar-item w3-mobile" href="/kayit">kayıt ol</a>
+                </span>
+            
+            {% endif %}
+
+            
+            
+         </diV>
+
+         <div class="w3-sidebar w3-bar-block w3-collapse w3-card w3-animate-left bg-sidebar ust sidebar-margin" style="position: fixed;" id="mySidebar">
+            <button class="w3-bar-item w3-button w3-large w3-hide-large" onclick="w3_close()">kapat &times;</button>
+            <span class="w3-bar-item w3-xlarge" style="text-decoration:bold;">gündem</span>
+            <table class="w3-xxlarge w3-table">
+               
+
+                
+                
+                {% for baslik in gundemBasliklar%}
+                    <tr class="w3-bar-item w3-button no-hover" draggable="true">
+                        
+                        <td class="mysidebar">
+                            <a href="/baslik/{{baslik['baslikId']}}" class="no-hover">{{baslik["baslik"]}}</a>
+                        </td>
+                    
+                        <td class="posts">
+                            {{baslik["postlar"]}}
+                        </td>
+                    </tr>
+                {% endfor %}
+                
+            </table>
+        </div>
+
+        
+        <div id="main" class="w3-container w3-left-align w3-threequarter main-kapat">
+
+            <div class="w3-container w3-threequarter w3-margin-top pr-margin-top w3-mobile">
+                <span class="baslik">
+                    <a href="#" class="baslik-tag">
+                        yeni başlık açıyorsun, dikkatli ol : )
+                    </a>
+                </span>
+            </div>
+
+            
+
+            <div class="w3-container w3-threequarter w3-margin-top">
+
+                {% if logged_in %}
+               
+                    <div class="editor">
+                        <button class="w3-button w3-halfquarter w3-tiny editor-buttons w3-round" onclick="getname();">bkz</button>
+                            <button class="w3-button w3-halfquarter w3-tiny editor-buttons w3-round">link</button>
+                            <button class="w3-button w3-halfquarter w3-tiny editor-buttons w3-round">foto</button>
+                            <button class="w3-button w3-halfquarter w3-tiny editor-buttons w3-round">dördüncü</button>
+
+                            <a style="color: white;" id="sayac">0/500</a>
+                <form method="POST">
+                    <input class="w3-rest" placeholder="başlığın adı" maxlength="50" name="baslik-adi">
+                    <br>
+                    <br>
+                        <span>
+                            
+                        </span>
+                
+                    
+                        <textarea class="w3-threequarter textarea-editor" name="message" id="editor" minlength="1" maxlength="500" onkeyup="kelimeSayaci();" placeholder="başlığın ilk mesajı" style="color:black;"></textarea>
+
+                        </div>
+                        <button class="w3-button w3-tiny editor-buttons w3-round w3-bottom-left yolla-buton" name="{{baslikId}}" id="yolla">yolla bakalım</button>
+                </form>    
+                </div>
+                {% endif %}
+            
+            <script src="{{ url_for('static', filename='js/index.js') }}"></script>
+
+    </body>
+
+</html>

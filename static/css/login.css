@@ -1,0 +1,37 @@
+.input {
+    border-radius: 24px;
+    border: 0;
+    padding: 5px;
+    padding-right: 20px;
+    height:40px;
+    transition: 1s;
+    outline: none;
+}
+
+#input:focus{
+    box-shadow: 0 0 10px white, 0 0 50px white, 0 0 80px white;
+    cursor: pointer;
+}
+
+#button {
+    border: 0;
+    width: 85%;
+    height:40px;
+    border-radius:24px ;
+    transition: 1s;
+    outline: none;
+}
+
+#button:hover{
+    box-shadow: 0 0 10px #ceab17, 0 0 50px #ceab17, 0 0 80px #ceab17;
+    cursor: pointer;
+}
+
+#logo {
+    width: 215px;
+    height: 55.5px;
+}
+
+.sifre-neydi {
+    color: white!important;
+}

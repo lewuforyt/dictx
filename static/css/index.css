@@ -1,0 +1,171 @@
+body{
+    background-color: #161616;
+}
+
+.ust {
+    background-color: #0f0f0f;
+    color:white;
+    z-index: 5;
+}
+
+.bar-hover {
+    transition: 0.5s;
+}
+
+#mySidebar{
+    width:200px;
+    display: block;
+}
+
+.baslik  {
+    color: white;
+    font-size: 35px;
+}
+
+.baslik-tag {
+    text-decoration: none;
+}
+
+.baslik-tag:hover {
+    text-decoration: underline;
+}
+
+
+.logo {
+    width: 215px;
+    height: 50px;
+}
+
+.entry {
+    color: white;
+    margin-top: 60px;
+
+}
+
+.begen-ikonu {
+    color: #ceab17;
+}
+
+.like {
+    color: white;
+    transition: 0.3s;
+
+}
+
+.liked {
+    color: #ceab17;
+    transition: 0.3s;
+}
+
+.liked:hover{
+    color: #ceab17;
+    cursor: pointer;
+
+    text-shadow: 0 0 10px #ceab17, 0 0 50px #ceab17, 0 0 80px #ceab17;
+}
+
+.like:hover{
+    color: #ceab17;
+    cursor: pointer;
+
+    text-shadow: 0 0 10px #ceab17, 0 0 50px #ceab17, 0 0 80px #ceab17;
+}
+
+.mysidebar {
+    font-size: 15px;
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.posts{
+    font-size: 15px;
+    color:#ceab17;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.no-hover:hover{
+    background-color: #0f0f0f!important;
+    text-decoration: none;
+    color: rgb(136, 131, 131)!important;
+}
+
+.entry-author{
+    color:#ceab17;
+    font-size: 12px;
+}
+
+.entry-date{
+    color:gray;
+    font-size: 12px;
+}
+
+.pr-margin-top {
+    margin-top: 100px!important;
+}
+
+.sidebar-margin{
+    margin-top: 65px!important;
+
+}
+
+.bg-sidebar {
+    background-color:#161616 ;
+}
+
+.z-index-alt {
+    z-index: -5;
+}
+
+.footer-alt {
+    z-index: 3;
+    background-color: white;
+    height: 200px;
+}
+
+@media only screen and (max-width:800px){
+    .pr-margin-top{
+        margin-top:200px!important;
+    }
+    .sidebar-margin{
+        display: none!important;
+
+    }
+    .main-kapat{
+        margin-left: 0%!important;
+    }
+}
+
+.footer-index {
+    
+}
+
+.editor {
+    margin-top: 50px;
+    width: 100%;
+    margin-bottom: 200px;
+
+}
+
+.editor-buttons{
+    background-color: #ceab17;
+    margin-bottom: 15px;
+    
+    margin: 5px;
+    margin-left: 0;
+}
+
+.editor-buttons:hover{
+    background-color: rgb(242, 234, 234)!important;
+
+}
+
+.textarea-editor {
+    height: 200px;
+    background-color: rgba(232, 232, 232, 0.994);
+
+    border: none;
+}
+
+.yolla-buton{
+    margin-bottom:50px ;
+}
